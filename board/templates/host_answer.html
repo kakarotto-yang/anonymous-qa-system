@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>板子</title>
+</head>
+<body>
+<div class="jumbotron text-center" style="margin-bottom:0;">
+  <h1>{{ title }}</h1>
+  <p>{{ topic }}</p>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="account">问题：{{ question }}</label>
+                    <textarea type="text" class="form-control" rows="5" cols="10" name="answer">{{ answer }}</textarea>
+                </div>
+                {% csrf_token %}
+                <div style="text-align: center;"><input type="submit" value="答复" class="btn btn-primary"></div>
+            </form>
+<br>
+ <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-8">
+            <a href="../../list"><input type="button" value="看看问题" class="btn btn-primary"></a>
+            <a href="../../ask"><input type="button" value="去提问" class="btn btn-primary"></a>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

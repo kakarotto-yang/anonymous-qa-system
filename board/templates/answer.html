@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>板子</title>
+</head>
+<body>
+<div class="jumbotron text-center" style="margin-bottom:0;">
+  <h1>{{ title }}</h1>
+  <p>{{ topic }}</p>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <label for="account">问题：{{ question }}</label>
+		<br>
+            <label for="account">他的回复：</label>
+
+            <div>
+                {% if answer %}
+                    <h4>{{ answer }}</h4>
+                {% else %}
+                    <h4>还没回复</h4>
+                {% endif %}
+            </div>
+            <br>
+            <a href="../../board/ask"><input type="button" value="继续提问" class="btn btn-primary"></a>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

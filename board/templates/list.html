@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>板子</title>
+</head>
+<body>
+<div class="jumbotron text-center" style="margin-bottom:0;">
+  <h1>问题</h1>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="Message_res">展示：</label>
+                <br>
+                {% for question in questions %}
+                    <div style="text-align: center">
+                        <span >{{ question.user_agent }}</span>
+                    </div>
+                    <a href="../../board/host/answer?question_key={{ question.question_key }}">
+                    <div class="card">
+                        <div class="card-body" >
+                            <div>
+                                <span>{{ question.email }}#{{ question.create_time }}:<br>{{ question.question }}</span>
+                            </div>
+                            <span style="float: left">{{ question.ip }}</span>
+                            {% if question.is_answer %}
+                                <span style="float: right">已回复</span>
+                            {% else %}
+                                <span style="float: right">回复</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    </a>
+                    <br>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-8">
+            <a href="../../board/changeBoardIfo"><input type="button" value="更改页面" class="btn btn-primary"></a>
+            <a href="../../board/ask"><input type="button" value="去提问" class="btn btn-primary"></a>
+        </div>
+    </div>
+</div>
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <p>访问量:{{ visitis }}</p>
+    <p>问题数量:{{ count }}</p>
+</div>
+</body>
+</html>

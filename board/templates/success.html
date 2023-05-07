@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>板子</title>
+</head>
+<body>
+<div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <h2 class="text-center mb-4">提问成功！复制下面网址浏览器打开查看回复。</h2>
+                <form>
+
+                    <label>
+                      url：
+                    <input type="text" class="form-control" readonly id="answer_url" name="answer_url" value={{ answer_url }}>
+                    </label>
+                    <button class="btn btn-primary" type="button" id="copy-btn">复制</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <h2 class="text-center mb-4">Enter your email</h2>
+                <form action="" method="post" class="needs-validation" novalidate>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="如果您想收到邮箱回复提醒，可以在此输入您的邮箱地址" required>
+                        <div class="invalid-feedback">
+                            Please enter a valid email address.
+                        </div>
+                    </div>
+                    {% csrf_token %}
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+                <a href="../../board/ask"><input type="button" value="返回" class="btn btn-primary"></a>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        const copyBtn = document.getElementById('copy-btn');
+    copyBtn.addEventListener('click', function() {
+      const answer_url = document.getElementById('answer_url').value;
+
+      const textToCopy = `${answer_url}`;
+         const textarea = document.createElement('textarea');
+      textarea.value = textToCopy;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      copyBtn.innerText = "复制成功"
+      {#navigator.clipboard.writeText(textToCopy)#}
+      {#  .then(() => {#}
+      {#      copyBtn.innerText = "复制成功"#}
+      {#    console.log('复制成功！');#}
+      {#  })#}
+      {#  .catch((error) => {#}
+      {#    console.error('复制失败：', error);#}
+      {#  });#}
+    });
+        // Validate email format
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        // Add event listener to form submission
+        const form = document.querySelector('.needs-validation');
+        form.addEventListener('submit', function(event) {
+            if (!validateEmail(document.getElementById('email').value)) {
+                event.preventDefault();
+                document.getElementById('email').classList.add('is-invalid');
+            }
+        });
+    </script>
+</body>
+</html>

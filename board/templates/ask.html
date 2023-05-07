@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>板子</title>
+</head>
+<body>
+<div class="jumbotron text-center" style="margin-bottom:0;">
+  <h1>{{ title }}</h1>
+  <p>{{ topic }}</p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="account">提问：</label>
+                    {{ Question.errors }}
+                    {{ Question.question }}
+                </div>
+                <div style="display: none">
+                <input name="question_key" value="{{ question_key }}">
+                </div>
+                {% csrf_token %}
+                <div style="text-align: center;"><input type="submit" value="提问" class="btn btn-primary"></div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="jumbotron text-center" style="position:absolute;bottom: 0;width: 100%">
+    <p>问题总量:{{ count }}</p>
+</div>
+</body>
+</html>
