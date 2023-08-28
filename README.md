@@ -12,3 +12,10 @@
 5. 在MySQL中找到board_ifo这个表，添加一条记录，必须保证记录id是1
 6. 该系统没有用户注册功能，所以也需要在auth_user这个表添加作者的账号信息
 7. 最后终端输入：python manage.py runserver 启动项目
+
+
+
+![输入图片说明](image.png)
+
+
+
