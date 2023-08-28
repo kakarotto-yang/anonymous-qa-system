@@ -13,6 +13,9 @@
 6. 该系统没有用户注册功能，所以也需要在auth_user这个表添加作者的账号信息
 7. 最后终端输入：python manage.py runserver 启动项目
 
+地址：http://47.106.178.237:8000/board/ask/
+
+没啥重要的，暴露了就暴露了
 
 
 ![输入图片说明](image.png)
